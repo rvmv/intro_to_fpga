@@ -18,3 +18,8 @@ jtagconfig
 1) USB-Blaster [3-4]
   031050DD   10M50DA(.|ES)/10M50DC
 ```
+# demo
+
+https://youtu.be/ZetxJ7oy0NQ
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ZetxJ7oy0NQ/0.jpg)](https://youtu.be/ZetxJ7oy0NQ)
