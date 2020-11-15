@@ -1,0 +1,105 @@
+/**
+* Common module for different multiplekser
+**/
+
+
+
+/**
+* Simple mux using continuous assignment
+* M - mux output signal
+* S - select signal
+* X - data input
+* Y - data input
+**/
+module mux_2_to_1_simple(
+    input  [9:0] SW, 
+    output [9:0] LEDR
+);
+
+wire [2:0] M;
+wire [2:0] X = SW[2:0];
+wire [2:0] Y = SW[5:3];
+wire S = SW[9];
+
+assign LEDR[9] = SW[9];
+assign LEDR[2:0] = SW[2:0];
+assign LEDR[5:3] = SW[5:3];
+assign LEDR[8:6] = M;
+
+b1_mux_2_1_comb  b1_mux_2_1_comb  (.d0(X), .d1(Y), .sel(S), .M(M));
+
+endmodule
+
+/**
+* Simple mux using if statement or case
+* M - mux output signal
+* S - select signal
+* X - data input
+* Y - data input
+**/
+module mux_2_to_1_procedural(
+    input  [9:0] SW, 
+    output [9:0] LEDR
+);
+
+wire [2:0] M;
+wire [2:0] X = SW[2:0];
+wire [2:0] Y = SW[5:3];
+wire S = SW[9];
+
+assign LEDR[9]   = SW[9];
+assign LEDR[2:0] = SW[2:0];
+assign LEDR[5:3] = SW[5:3];
+assign LEDR[8:6] = M;
+
+b3_mux_2_1_case  b2_mux  (.d0(X), .d1(Y), .sel(S), .M(M));
+
+endmodule
+
+
+module b1_mux_2_1_comb
+(
+    input  [2:0] d0,
+    input  [2:0] d1,
+    input  sel,
+    output [2:0] M
+);
+
+    assign M = sel ? d1 : d0;
+
+endmodule
+
+module b2_mux_2_1_if_statement (
+    input  [2:0] d0,
+    input  [2:0] d1,
+    input  sel,
+    output reg [2:0] M
+);
+
+always @(d0 or d1 or sel) begin
+    if (sel == 1) 
+      M = d1;
+    else
+      M = d0;
+end        
+
+
+endmodule
+
+module b3_mux_2_1_case (
+    input  [2:0] d0,
+    input  [2:0] d1,
+    input  sel,
+    output reg [2:0] M
+);
+
+always @(d0 or d1 or sel) begin
+    case (sel)
+      1'b0: M = d0;
+      1'b1: M = d1;
+      default: M = d0;
+    endcase
+end        
+
+
+endmodule

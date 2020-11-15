@@ -1,0 +1,193 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/media/rvm/data/VLSI.X416/Topic6_Lab_Intro_to_FPGA/intro_to_digital/00_intro_to_digital
+vb1_mux_2_1_comb
+Z1 !s110 1605430862
+!i10b 1
+!s100 GWZFLLSFH;oibzW5gjObI0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IjD@Sd8AlDno<4Z_4WFR_I0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1605415013
+Z5 8./rtl/mux_2_to_1.v
+Z6 F./rtl/mux_2_to_1.v
+!i122 0
+L0 48 11
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1605430862.000000
+Z9 !s107 ./rtl/switch_to_led.v|./rtl/mux_2_to_1.v|
+Z10 !s90 -reportprogress|300|./rtl/mux_2_to_1.v|./rtl/switch_to_led.v|
+!i113 1
+Z11 tCvgOpt 0
+vb2_mux_2_1_if_statement
+R1
+!i10b 1
+!s100 L^[O8K8BK0E?eTQmgAmB=2
+R2
+IX9R0`ZRUUN7]lXoaY>R@53
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 60 16
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vb3_mux_2_1_case
+R1
+!i10b 1
+!s100 Kl6CZjR_CUWWlR8VVYhZ30
+R2
+IEF?]fR5>fc6iXZa<Tn>8<2
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 77 17
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vboard_terasic
+Z12 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+!s110 1605430875
+!i10b 1
+!s100 dA]_lSkY6X:=c0fCRlAOO0
+R2
+I2JnmLCGR^gX`V]8VPoKFR3
+R3
+S1
+R0
+w1605414018
+8./rtl/board_terasic.sv
+F./rtl/board_terasic.sv
+!i122 1
+L0 2 21
+R7
+r1
+!s85 0
+31
+!s108 1605430875.000000
+!s107 ./rtl/board_terasic.sv|
+!s90 -reportprogress|300|-sv|./rtl/board_terasic.sv|
+!i113 1
+o-sv
+R11
+vmux_2_to_1_procedural
+R1
+!i10b 1
+!s100 mh]nP?4NTVD_6=<K9RG5b1
+R2
+Il2E37`1:XcnedU0Z_T7iU3
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 28 18
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vmux_2_to_1_simple
+R1
+!i10b 1
+!s100 0cjZWZnRbS5[6lFZCeg>W2
+R2
+Iahe]JAUj<AB7B_OUVN70j2
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 9 18
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vswitch_to_led
+R1
+!i10b 1
+!s100 ^5QSD_HKPR6=1Udcm[`DR2
+R2
+I7Q<2>k2WhKGg[1G_JCFTo2
+R3
+R0
+w1605379463
+8./rtl/switch_to_led.v
+F./rtl/switch_to_led.v
+!i122 0
+L0 1 8
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vtestbench
+R12
+!s110 1605430885
+!i10b 1
+!s100 km]og>OZABc[FkX54VSKO1
+R2
+Ib=MX_Rf=`Oe;WHG5`D@I62
+R3
+S1
+R0
+w1605413293
+8./tb/testbench.sv
+F./tb/testbench.sv
+!i122 2
+L0 3 41
+R7
+r1
+!s85 0
+31
+!s108 1605430885.000000
+!s107 ./tb/testbench.sv|
+!s90 -reportprogress|300|-sv|./tb/testbench.sv|
+!i113 1
+o-sv
+R11

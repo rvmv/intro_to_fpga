@@ -1,0 +1,5 @@
+fix Unable to read device chain - JTAG chain broken
+
+sudo apt-get install libudev-dev
+killall jtagd
+jtagd --user-start

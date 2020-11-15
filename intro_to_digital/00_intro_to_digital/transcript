@@ -1,0 +1,88 @@
+ls
+# Makefile
+# rtl
+# run
+# sim_modelsim
+# synth_de10_lite
+# tb
+# transcript
+vlib work
+vlog     ../rtl/*.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:00:46 on Nov 15,2020
+# vlog -reportprogress 300 ../rtl/*.v 
+# ** Error: (vlog-7) Failed to open design unit file "../rtl/*.v" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 15:00:46 on Nov 15,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/altera/quartus_20.1_lite/modelsim_ase/linuxaloem/vlog failed.
+vlog     ./rtl/*.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:01:02 on Nov 15,2020
+# vlog -reportprogress 300 ./rtl/mux_2_to_1.v ./rtl/switch_to_led.v 
+# -- Compiling module mux_2_to_1_simple
+# -- Compiling module mux_2_to_1_procedural
+# -- Compiling module b1_mux_2_1_comb
+# -- Compiling module b2_mux_2_1_if_statement
+# -- Compiling module b3_mux_2_1_case
+# -- Compiling module switch_to_led
+# 
+# Top level modules:
+# 	mux_2_to_1_simple
+# 	mux_2_to_1_procedural
+# 	b3_mux_2_1_case
+# 	switch_to_led
+# End time: 15:01:02 on Nov 15,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -sv ./rtl/*.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:01:15 on Nov 15,2020
+# vlog -reportprogress 300 -sv ./rtl/board_terasic.sv 
+# -- Compiling module board_terasic
+# 
+# Top level modules:
+# 	board_terasic
+# End time: 15:01:15 on Nov 15,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -sv ./tb/*.sv 
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:01:25 on Nov 15,2020
+# vlog -reportprogress 300 -sv ./tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 15:01:25 on Nov 15,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+add wave sim:/testbench/*
+# Unrecognized dataset prefix: sim
+run -all
+# No Design Loaded!
+vsim work.testbench
+# vsim work.testbench 
+# Start time: 15:02:12 on Nov 15,2020
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.b1_mux_2_1_comb
+# ** Error: (vsim-3063) Port 'y' not found in the connected module (4th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ./tb/testbench.sv Line: 11
+# Error loading design
+# End time: 15:02:12 on Nov 15,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vsim work.testbench
+# vsim work.testbench 
+# Start time: 15:02:14 on Nov 15,2020
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.b1_mux_2_1_comb
+# ** Error: (vsim-3063) Port 'y' not found in the connected module (4th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ./tb/testbench.sv Line: 11
+# Error loading design
+# End time: 15:02:14 on Nov 15,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# Break key hit
+# Break key hit
+# Break key hit
+# Break key hit
+# Break key hit
+# Break key hit
