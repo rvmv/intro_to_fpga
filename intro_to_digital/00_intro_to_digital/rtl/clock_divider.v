@@ -1,22 +1,28 @@
 module clock_divider
 #(
-  parameter COUNTER_SIZE = 5,
-  parameter COUNTER_MAX_COUNT = (2 ** COUNTER_SIZE) - 1
+  parameter DIV_POW_FASTEST = 1,
+  parameter DIV_POW_SLOWEST = 26
 )(
-  input fast_clock,
-  output slow_clock
+  input        fast_clock,
+  input        sel_lo,
+  input        sel_mid,
+  output logic slow_clock
 );
 
-reg [COUNTER_SIZE - 1:0] count;
+// 50 MHz / 2 ** 26 = 0.75 Hz
+// 50 MHz / 2 ** 22 = 11 Hz
+// 50 MHz / 2 ** 21 = 25 Hz
 
-always @(posedge fast_clock)
-  begin
-    if (count == COUNTER_MAX_COUNT)
-      count <= 0;
-    else
-      count <= count + 1'b1;
-  end
+logic [DIV_POW_SLOWEST - 1: 0] counter;
 
-assign slow_clock = count[COUNTER_SIZE-1];
+always_ff @(posedge fast_clock)
+  counter <= counter + 1'b1;
+
+
+always_ff @(posedge fast_clock)
+  slow_clock <= sel_lo  ? counter [DIV_POW_SLOWEST - 1] : 
+                sel_mid ? counter [DIV_POW_SLOWEST - 5] :
+                          counter [DIV_POW_FASTEST - 1] ;
+
 
 endmodule

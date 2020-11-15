@@ -1,19 +1,26 @@
-module knight_rider (
+module knight_rider #(
+  parameter WIDTH = 4
+)(
     input wire CLOCK_50,
-    output wire [9:0] LEDR
+    output wire [9:0] LEDR,
+    input  [9:0] SW
 );
   
   wire slow_clock;
 
-  reg [3:0] count;
-  reg count_up;
+  logic [WIDTH-1:0] count;
+  logic count_up;
   
-  clock_divider #(22) u0 (
-    .fast_clock(CLOCK_50),
-	  .slow_clock(slow_clock)
+  //replace with pll
+  clock_divider #(.DIV_POW_FASTEST (10), .DIV_POW_SLOWEST (26)) 
+  clk_divider (
+    .fast_clock(CLOCK_50), 
+    .sel_lo(SW[0]), 
+    .sel_mid(SW[1]), 
+    .slow_clock(slow_clock)
   );
 
-  always @ (posedge slow_clock)
+  always_ff @ (posedge slow_clock)
     begin
       if (count_up)
         count <= count + 1'b1;
@@ -21,11 +28,11 @@ module knight_rider (
         count <= count - 1'b1;
     end
 
-  always @ (posedge slow_clock)
+  always_ff @ (posedge slow_clock)
     begin
-      if (count == 9)
+      if (count == 4'd8)
         count_up <= 1'b0;
-      else if (count == 0)
+      else if (count == 4'd1)
         count_up <= 1'b1;
       else
         count_up <= count_up;

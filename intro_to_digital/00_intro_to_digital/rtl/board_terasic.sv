@@ -19,6 +19,6 @@ module board_terasic
 
 //mux_2_to_1_procedural mux_procedural (.SW(SW), .LEDR(LED));
 
-knight_rider kr (.CLOCK_50(CLK), .LEDR(LED));
+knight_rider kr (.CLOCK_50(CLK), .LEDR(LED), .SW(SW));
 
 endmodule
