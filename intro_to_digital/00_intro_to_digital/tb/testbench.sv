@@ -1,43 +1,40 @@
 `timescale 1 ns / 100 ps
 
-module testbench;
- // input and output test signals
-    reg        [2:0] a;
-    reg        [2:0] b;
-    reg        sel;
-    wire [2:0] y;
+module top_tb;
 
-     // creating the instance of the module we want to test
-    b3_mux_2_1_case dut
-    (
-        .d0  ( a       ),
-        .d1  ( b       ),
-        .sel ( sel     ),
-        .M   ( y       ) 
-    );
+// input and output test signals
+bit clk, reset;
 
-    initial
-        begin
-            a = 1'b0;
-            b = 1'b1;
-            #5;
-            sel = 1'b0;     // sel change to 0; a -> y
-            #10;
-            sel = 1'b1;     // sel change to 1; b -> y
-            #10
-            b = 1'b0;		// b change; y changes too. sel == 1'b1
-            #5
-            b = 1'b1;
-            #5;            // pause
-            $finish();
-        end
-    // do at the beginning of the simulation
-    // print signal values on every change
-    initial 
-        $monitor("a=%b b=%b sel=%b y=%b", a,   b,   sel,   y,   );
-    // do at the beginning of the simulation
-    initial 
-        $dumpvars;  //iverilog dump init
+localparam t    = 20;
+localparam Tmax = 300;
+localparam WIDTH = 8;
 
+initial begin
+  clk <= 0;
+  forever 
+    #(t/2) clk <= ~clk;
+end
 
-endmodule
+initial begin
+  reset <= 'b0;
+  repeat(3) @(posedge clk);
+  reset <= 'b1;
+end
+
+logic [31:0] cnt_from_dut;
+
+counter DUT (
+    .clk      ( clk          ),
+    .rst_n    ( reset        ),
+    .cntr_up  ( cnt_from_dut )
+);
+
+// test duration
+initial begin
+  repeat(Tmax) @(posedge clk);
+  $finish;
+end
+
+  initial $monitor ("%5t value=%3d %8b", $time, cnt_from_dut, cnt_from_dut);
+  initial $dumpvars;
+endmodule 

@@ -1,14 +1,14 @@
-Fitter Status : Successful - Mon Nov 16 00:55:06 2020
+Fitter Status : Successful - Thu Nov 19 17:58:24 2020
 Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 Revision Name : system
 Top-level Entity Name : board_terasic
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 45 / 49,760 ( < 1 % )
-    Total combinational functions : 45 / 49,760 ( < 1 % )
-    Dedicated logic registers : 32 / 49,760 ( < 1 % )
-Total registers : 32
+Total logic elements : 84 / 49,760 ( < 1 % )
+    Total combinational functions : 84 / 49,760 ( < 1 % )
+    Dedicated logic registers : 48 / 49,760 ( < 1 % )
+Total registers : 48
 Total pins : 71 / 360 ( 20 % )
 Total virtual pins : 0
 Total memory bits : 0 / 1,677,312 ( 0 % )
