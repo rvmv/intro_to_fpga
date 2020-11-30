@@ -1,5 +1,5 @@
 Analysis & Synthesis report for system
-Thu Nov 19 17:58:14 2020
+Sat Nov 21 00:05:27 2020
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -14,17 +14,19 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Inverted Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: knight_rider:kr
- 12. Parameter Settings for User Entity Instance: knight_rider:kr|clock_divider:clk_divider
- 13. Parameter Settings for User Entity Instance: counter:counter
- 14. Parameter Settings for User Entity Instance: counter_down:counter_down
- 15. Parameter Settings for User Entity Instance: summator:sm|seven_seg_N:hex
- 16. Port Connectivity Checks: "summator:sm"
- 17. Post-Synthesis Netlist Statistics for Top Partition
- 18. Elapsed Time Per Partition
- 19. Analysis & Synthesis Messages
+  9. Parameter Settings for User Entity Instance: clock_divider:clk_divider
+ 10. Parameter Settings for User Entity Instance: counter:counter
+ 11. Parameter Settings for User Entity Instance: counter_down:counter_down
+ 12. Parameter Settings for User Entity Instance: bin2bcd:bin2bcd_inst
+ 13. Parameter Settings for User Entity Instance: seven_seg_N:hex
+ 14. Port Connectivity Checks: "seven_seg_N:hex"
+ 15. Port Connectivity Checks: "bin2bcd:bin2bcd_inst"
+ 16. Port Connectivity Checks: "counter_down:counter_down"
+ 17. Port Connectivity Checks: "counter:counter"
+ 18. Port Connectivity Checks: "clock_divider:clk_divider"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -51,15 +53,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Nov 19 17:58:14 2020       ;
+; Analysis & Synthesis Status        ; Successful - Sat Nov 21 00:05:27 2020       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; system                                      ;
 ; Top-level Entity Name              ; board_terasic                               ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 83                                          ;
-;     Total combinational functions  ; 83                                          ;
-;     Dedicated logic registers      ; 48                                          ;
-; Total registers                    ; 48                                          ;
+; Total logic elements               ; 22                                          ;
+;     Total combinational functions  ; 22                                          ;
+;     Dedicated logic registers      ; 0                                           ;
+; Total registers                    ; 0                                           ;
 ; Total pins                         ; 71                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -78,7 +80,7 @@ https://fpgasoftware.intel.com/eula.
 ; Device                                                           ; 10M50DAF484C7G     ;                    ;
 ; Top-level entity name                                            ; board_terasic      ; system             ;
 ; Family name                                                      ; MAX 10 FPGA        ; Cyclone V          ;
-; Maximum processors allowed for parallel compilation              ; 4                  ;                    ;
+; Maximum processors allowed for parallel compilation              ; All                ;                    ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
 ; Enable compact report table                                      ; Off                ; Off                ;
@@ -163,15 +165,13 @@ https://fpgasoftware.intel.com/eula.
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
 ; Number detected on machine ; 16          ;
-; Maximum allowed            ; 4           ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -182,58 +182,52 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------+---------+
 ; ../rtl/board_terasic.sv          ; yes             ; User SystemVerilog HDL File  ; /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv ;         ;
 ; ../rtl/clock_divider.sv          ; yes             ; User SystemVerilog HDL File  ; /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/clock_divider.sv ;         ;
-; ../rtl/knight_rider.sv           ; yes             ; User SystemVerilog HDL File  ; /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/knight_rider.sv  ;         ;
 ; ../rtl/summator.sv               ; yes             ; User SystemVerilog HDL File  ; /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv      ;         ;
 +----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 83        ;
-;                                             ;           ;
-; Total combinational functions               ; 83        ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 25        ;
-;     -- 3 input functions                    ; 13        ;
-;     -- <=2 input functions                  ; 45        ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 42        ;
-;     -- arithmetic mode                      ; 41        ;
-;                                             ;           ;
-; Total registers                             ; 48        ;
-;     -- Dedicated logic registers            ; 48        ;
-;     -- I/O registers                        ; 0         ;
-;                                             ;           ;
-; I/O pins                                    ; 71        ;
-;                                             ;           ;
-; Embedded Multiplier 9-bit elements          ; 0         ;
-;                                             ;           ;
-; Maximum fan-out node                        ; CLK~input ;
-; Maximum fan-out                             ; 43        ;
-; Total fan-out                               ; 430       ;
-; Average fan-out                             ; 1.58      ;
-+---------------------------------------------+-----------+
++------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                  ;
++---------------------------------------------+--------------------------------+
+; Resource                                    ; Usage                          ;
++---------------------------------------------+--------------------------------+
+; Estimated Total logic elements              ; 22                             ;
+;                                             ;                                ;
+; Total combinational functions               ; 22                             ;
+; Logic element usage by number of LUT inputs ;                                ;
+;     -- 4 input functions                    ; 22                             ;
+;     -- 3 input functions                    ; 0                              ;
+;     -- <=2 input functions                  ; 0                              ;
+;                                             ;                                ;
+; Logic elements by mode                      ;                                ;
+;     -- normal mode                          ; 22                             ;
+;     -- arithmetic mode                      ; 0                              ;
+;                                             ;                                ;
+; Total registers                             ; 0                              ;
+;     -- Dedicated logic registers            ; 0                              ;
+;     -- I/O registers                        ; 0                              ;
+;                                             ;                                ;
+; I/O pins                                    ; 71                             ;
+;                                             ;                                ;
+; Embedded Multiplier 9-bit elements          ; 0                              ;
+;                                             ;                                ;
+; Maximum fan-out node                        ; bin2bcd:bin2bcd_inst|bcd[1]~12 ;
+; Maximum fan-out                             ; 7                              ;
+; Total fan-out                               ; 166                            ;
+; Average fan-out                             ; 1.01                           ;
++---------------------------------------------+--------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                       ;
-+------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                      ; Entity Name     ; Library Name ;
-+------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------+-----------------+--------------+
-; |board_terasic                           ; 83 (8)              ; 48 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 71   ; 0            ; 0          ; |board_terasic                                                           ; board_terasic   ; work         ;
-;    |counter:counter|                     ; 8 (8)               ; 8 (8)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|counter:counter                                           ; counter         ; work         ;
-;    |counter_down:counter_down|           ; 9 (9)               ; 8 (8)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|counter_down:counter_down                                 ; counter_down    ; work         ;
-;    |knight_rider:kr|                     ; 44 (16)             ; 32 (5)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|knight_rider:kr                                           ; knight_rider    ; work         ;
-;       |clock_divider:clk_divider|        ; 28 (28)             ; 27 (27)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|knight_rider:kr|clock_divider:clk_divider                 ; clock_divider   ; work         ;
-;    |summator:sm|                         ; 14 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|summator:sm                                               ; summator        ; work         ;
-;       |seven_seg_N:hex|                  ; 14 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|summator:sm|seven_seg_N:hex                               ; seven_seg_N     ; work         ;
-;          |seven_seg_digit:segment[0].dd| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|summator:sm|seven_seg_N:hex|seven_seg_digit:segment[0].dd ; seven_seg_digit ; work         ;
-;          |seven_seg_digit:segment[1].dd| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|summator:sm|seven_seg_N:hex|seven_seg_digit:segment[1].dd ; seven_seg_digit ; work         ;
-+------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------+-----------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                        ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                          ; Entity Name     ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------+-----------------+--------------+
+; |board_terasic                        ; 22 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 71   ; 0            ; 0          ; |board_terasic                                               ; board_terasic   ; work         ;
+;    |bin2bcd:bin2bcd_inst|             ; 15 (15)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|bin2bcd:bin2bcd_inst                          ; bin2bcd         ; work         ;
+;    |seven_seg_N:hex|                  ; 7 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|seven_seg_N:hex                               ; seven_seg_N     ; work         ;
+;       |seven_seg_digit:segment[0].dd| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |board_terasic|seven_seg_N:hex|seven_seg_digit:segment[0].dd ; seven_seg_digit ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -242,56 +236,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 48    ;
-; Number of registers using Synchronous Clear  ; 8     ;
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 8     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; counter_down:counter_down|cntr[1]      ; 2       ;
-; counter_down:counter_down|cntr[2]      ; 2       ;
-; counter_down:counter_down|cntr[0]      ; 3       ;
-; Total number of inverted registers = 3 ;         ;
-+----------------------------------------+---------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |board_terasic|knight_rider:kr|ShiftLeft0 ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |board_terasic|knight_rider:kr|ShiftLeft0 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
-
-
-+--------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: knight_rider:kr ;
-+----------------+-------+-------------------------------------+
-; Parameter Name ; Value ; Type                                ;
-+----------------+-------+-------------------------------------+
-; WIDTH          ; 4     ; Signed Integer                      ;
-+----------------+-------+-------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+----------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: knight_rider:kr|clock_divider:clk_divider ;
-+-----------------+-------+--------------------------------------------------------------+
-; Parameter Name  ; Value ; Type                                                         ;
-+-----------------+-------+--------------------------------------------------------------+
-; DIV_POW_FASTEST ; 10    ; Signed Integer                                               ;
-; DIV_POW_SLOWEST ; 26    ; Signed Integer                                               ;
-+-----------------+-------+--------------------------------------------------------------+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clock_divider:clk_divider ;
++-----------------+-------+----------------------------------------------+
+; Parameter Name  ; Value ; Type                                         ;
++-----------------+-------+----------------------------------------------+
+; DIV_POW_FASTEST ; 10    ; Signed Integer                               ;
+; DIV_POW_SLOWEST ; 26    ; Signed Integer                               ;
++-----------------+-------+----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -300,7 +262,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-------------------------------------+
 ; Parameter Name ; Value ; Type                                ;
 +----------------+-------+-------------------------------------+
-; WIDTH          ; 8     ; Signed Integer                      ;
+; WIDTH          ; 64    ; Signed Integer                      ;
 +----------------+-------+-------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -310,28 +272,76 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-----------------------------------------------+
 ; Parameter Name ; Value ; Type                                          ;
 +----------------+-------+-----------------------------------------------+
-; WIDTH          ; 8     ; Signed Integer                                ;
+; WIDTH          ; 64    ; Signed Integer                                ;
 +----------------+-------+-----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: summator:sm|seven_seg_N:hex ;
-+----------------+-------+-------------------------------------------------+
-; Parameter Name ; Value ; Type                                            ;
-+----------------+-------+-------------------------------------------------+
-; DIGITS         ; 6     ; Signed Integer                                  ;
-+----------------+-------+-------------------------------------------------+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: bin2bcd:bin2bcd_inst ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; W              ; 9     ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seven_seg_N:hex ;
++----------------+-------+-------------------------------------+
+; Parameter Name ; Value ; Type                                ;
++----------------+-------+-------------------------------------+
+; DIGITS         ; 6     ; Signed Integer                      ;
++----------------+-------+-------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------+
-; Port Connectivity Checks: "summator:sm"       ;
+; Port Connectivity Checks: "seven_seg_N:hex"   ;
 +-------------+-------+----------+--------------+
 ; Port        ; Type  ; Severity ; Details      ;
 +-------------+-------+----------+--------------+
-; data[23..8] ; Input ; Info     ; Stuck at GND ;
+; data[23..4] ; Input ; Info     ; Stuck at GND ;
 +-------------+-------+----------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "bin2bcd:bin2bcd_inst"                                                                                                                                                                  ;
++-----------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                                                                                                                           ;
++-----------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; bin       ; Input  ; Warning  ; Input port expression (10 bits) is wider than the input port (9 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; bcd       ; Output ; Warning  ; Output or bidir port (11 bits) is wider than the port expression (10 bits) it drives; bit(s) "bcd[10..10]" have no fanouts                                                        ;
+; bcd[9..4] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                               ;
++-----------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "counter_down:counter_down"                                                               ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; cntr_down ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "counter:counter"                                                                       ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; cntr_up ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "clock_divider:clk_divider"                                                                ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; slow_clock ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -340,23 +350,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 71                          ;
-; cycloneiii_ff         ; 48                          ;
-;     CLR               ; 8                           ;
-;     SCLR              ; 8                           ;
-;     plain             ; 32                          ;
-; cycloneiii_lcell_comb ; 92                          ;
-;     arith             ; 41                          ;
-;         2 data inputs ; 38                          ;
-;         3 data inputs ; 3                           ;
-;     normal            ; 51                          ;
+; cycloneiii_lcell_comb ; 25                          ;
+;     normal            ; 25                          ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 13                          ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 10                          ;
-;         4 data inputs ; 25                          ;
+;         1 data inputs ; 1                           ;
+;         4 data inputs ; 22                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 3.40                        ;
-; Average LUT depth     ; 2.20                        ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 5.97                        ;
 +-----------------------+-----------------------------+
 
 
@@ -375,15 +376,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Thu Nov 19 17:58:08 2020
+    Info: Processing started: Sat Nov 21 00:05:19 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off system -c system
-Info (20032): Parallel compilation is enabled and will use up to 4 processors
-Warning (10229): Verilog HDL Expression warning at board_terasic.sv(99): truncated literal to match 1 bits File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 99
-Info (12021): Found 4 design units, including 4 entities, in source file /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Warning (10229): Verilog HDL Expression warning at board_terasic.sv(121): truncated literal to match 1 bits File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 121
+Info (12021): Found 5 design units, including 5 entities, in source file /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv
     Info (12023): Found entity 1: board_terasic File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 2
-    Info (12023): Found entity 2: counter File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 72
-    Info (12023): Found entity 3: counter_down File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 89
-    Info (12023): Found entity 4: up_down_counter File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 107
+    Info (12023): Found entity 2: counter File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 93
+    Info (12023): Found entity 3: counter_down File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 111
+    Info (12023): Found entity 4: up_down_counter File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 130
+    Info (12023): Found entity 5: bin2bcd File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 160
 Info (12021): Found 1 design units, including 1 entities, in source file /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/switch_to_led.v
     Info (12023): Found entity 1: switch_to_led File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/switch_to_led.v Line: 1
 Info (12021): Found 5 design units, including 5 entities, in source file /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/mux_2_to_1.v
@@ -398,23 +400,39 @@ Info (12021): Found 1 design units, including 1 entities, in source file /media/
     Info (12023): Found entity 1: knight_rider File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/knight_rider.sv Line: 1
 Info (12021): Found 3 design units, including 3 entities, in source file /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv
     Info (12023): Found entity 1: summator File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv Line: 1
-    Info (12023): Found entity 2: seven_seg_N File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv Line: 19
-    Info (12023): Found entity 3: seven_seg_digit File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv Line: 38
+    Info (12023): Found entity 2: seven_seg_N File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv Line: 17
+    Info (12023): Found entity 3: seven_seg_digit File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv Line: 36
+Warning (10236): Verilog HDL Implicit Net warning at board_terasic.sv(43): created implicit net for "CLOCK_50" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 43
+Warning (10236): Verilog HDL Implicit Net warning at board_terasic.sv(46): created implicit net for "slow_clock" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 46
 Info (12127): Elaborating entity "board_terasic" for the top level hierarchy
-Info (12128): Elaborating entity "knight_rider" for hierarchy "knight_rider:kr" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 32
-Info (12128): Elaborating entity "clock_divider" for hierarchy "knight_rider:kr|clock_divider:clk_divider" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/knight_rider.sv Line: 21
-Info (12128): Elaborating entity "counter" for hierarchy "counter:counter" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 49
-Warning (10230): Verilog HDL assignment warning at board_terasic.sv(83): truncated value with size 32 to match size of target (8) File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 83
-Info (12128): Elaborating entity "counter_down" for hierarchy "counter_down:counter_down" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 60
-Warning (10230): Verilog HDL assignment warning at board_terasic.sv(99): truncated value with size 32 to match size of target (8) File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 99
-Warning (10230): Verilog HDL assignment warning at board_terasic.sv(100): truncated value with size 32 to match size of target (8) File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 100
-Info (12128): Elaborating entity "summator" for hierarchy "summator:sm" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 65
-Info (12128): Elaborating entity "seven_seg_N" for hierarchy "summator:sm|seven_seg_N:hex" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv Line: 14
-Info (12128): Elaborating entity "seven_seg_digit" for hierarchy "summator:sm|seven_seg_N:hex|seven_seg_digit:segment[0].dd" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv Line: 31
-Info (13000): Registers with preset signals will power-up high File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 100
-Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (10036): Verilog HDL or VHDL warning at board_terasic.sv(75): object "data" assigned a value but never read File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 75
+Warning (10034): Output port "LED" at board_terasic.sv(7) has no driver File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:clk_divider" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 47
+Info (12128): Elaborating entity "counter" for hierarchy "counter:counter" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 58
+Info (12128): Elaborating entity "counter_down" for hierarchy "counter_down:counter_down" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 69
+Info (12128): Elaborating entity "bin2bcd" for hierarchy "bin2bcd:bin2bcd_inst" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 78
+Info (12128): Elaborating entity "seven_seg_N" for hierarchy "seven_seg_N:hex" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 84
+Info (12128): Elaborating entity "seven_seg_digit" for hierarchy "seven_seg_N:hex|seven_seg_digit:segment[0].dd" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/summator.sv Line: 29
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LED[0]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[1]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[2]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[3]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[4]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[5]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[6]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[7]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[8]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
+    Warning (13410): Pin "LED[9]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 7
     Warning (13410): Pin "HEX0[7]" is stuck at VCC File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 8
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 9
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 9
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 9
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 9
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 9
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 9
+    Warning (13410): Pin "HEX1[6]" is stuck at VCC File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 9
     Warning (13410): Pin "HEX1[7]" is stuck at VCC File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 9
     Warning (13410): Pin "HEX2[0]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 10
     Warning (13410): Pin "HEX2[1]" is stuck at GND File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 10
@@ -451,22 +469,19 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 7 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[0]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 5
-    Warning (15610): No output dependent on input pin "SW[4]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 5
-    Warning (15610): No output dependent on input pin "SW[5]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 5
-    Warning (15610): No output dependent on input pin "SW[6]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 5
-    Warning (15610): No output dependent on input pin "SW[7]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 5
-    Warning (15610): No output dependent on input pin "SW[8]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 5
+Warning (21074): Design contains 4 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLK" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 4
     Warning (15610): No output dependent on input pin "SW[9]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 5
-Info (21057): Implemented 154 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "KEY[0]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 6
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/rtl/board_terasic.sv Line: 6
+Info (21057): Implemented 93 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 58 output pins
-    Info (21061): Implemented 83 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 47 warnings
-    Info: Peak virtual memory: 455 megabytes
-    Info: Processing ended: Thu Nov 19 17:58:14 2020
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:20
+    Info (21061): Implemented 22 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 63 warnings
+    Info: Peak virtual memory: 421 megabytes
+    Info: Processing ended: Sat Nov 21 00:05:27 2020
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:22
 
 

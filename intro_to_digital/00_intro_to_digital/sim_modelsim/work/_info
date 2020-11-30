@@ -1,0 +1,344 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/media/rvm/data/VLSI.X416/fpga_lab/intro_to_fpga/intro_to_digital/00_intro_to_digital/sim_modelsim
+vb1_mux_2_1_comb
+Z1 !s110 1605700534
+!i10b 1
+!s100 U0_jj]fR0Wge<aYS_M?dJ1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Ii]gcH92OZOJo1cfab<8[`2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1605433909
+Z5 8../rtl/mux_2_to_1.v
+Z6 F../rtl/mux_2_to_1.v
+!i122 0
+L0 60 11
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1605700534.000000
+Z9 !s107 ../rtl/switch_to_led.v|../rtl/mux_2_to_1.v|
+Z10 !s90 ../rtl/mux_2_to_1.v|../rtl/switch_to_led.v|
+!i113 1
+Z11 tCvgOpt 0
+vb2_mux_2_1_if_statement
+R1
+!i10b 1
+!s100 oTE:<KHH`cc=;_fmWH<kW0
+R2
+Izb5kIz]GZHO_lIzUVIMYO0
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 72 16
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vb3_mux_2_1_case
+R1
+!i10b 1
+!s100 ]a6_N]WCL?NOIkTnHT4jE2
+R2
+IP29:Mh4SX7C0W[mWi7oK62
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 89 17
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vclock_divider
+Z12 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+R1
+!i10b 1
+!s100 oQEG31WOG71SJn]Vi4S8<1
+R2
+If_:Q<5XQcz9fBJ^NIA:jT3
+R3
+S1
+R0
+w1605463774
+8../rtl/clock_divider.sv
+F../rtl/clock_divider.sv
+!i122 1
+L0 1 28
+R7
+r1
+!s85 0
+31
+R8
+!s107 ../rtl/summator.sv|../rtl/knight_rider.sv|../rtl/clock_divider.sv|../rtl/board_terasic.sv|
+Z13 !s90 -sv|../rtl/board_terasic.sv|../rtl/clock_divider.sv|../rtl/knight_rider.sv|../rtl/summator.sv|
+!i113 1
+o-sv
+R11
+vcounter
+R12
+R1
+!i10b 1
+!s100 U00h7=Y=c6JKQA=6_Le>B0
+R2
+IPYCF15Nenh7PX9l9GZ27b3
+R3
+S1
+R0
+Z14 w1605698351
+Z15 8../rtl/board_terasic.sv
+Z16 F../rtl/board_terasic.sv
+!i122 1
+L0 71 15
+R7
+r1
+!s85 0
+31
+R8
+Z17 !s107 ../rtl/summator.sv|../rtl/knight_rider.sv|../rtl/clock_divider.sv|../rtl/board_terasic.sv|
+R13
+!i113 1
+o-sv
+R11
+vcounter_down
+R12
+R1
+!i10b 1
+!s100 @V26I;4J08RKSU<7oE_JX0
+R2
+IKzF6@kaDZaZ`Mo[<;K;d`0
+R3
+S1
+R0
+R14
+R15
+R16
+!i122 1
+L0 88 15
+R7
+r1
+!s85 0
+31
+R8
+R17
+R13
+!i113 1
+o-sv
+R11
+vknight_rider
+R12
+R1
+!i10b 1
+!s100 QMPlj0[_O7IAYI63kb7k@3
+R2
+I3;gbiR=QQ3]L9TJ8QbHl53
+R3
+S1
+R0
+w1605642389
+8../rtl/knight_rider.sv
+F../rtl/knight_rider.sv
+!i122 1
+L0 1 43
+R7
+r1
+!s85 0
+31
+R8
+R17
+R13
+!i113 1
+o-sv
+R11
+vmux_2_to_1_procedural
+R1
+!i10b 1
+!s100 ObAEf8cSX?>oH^iLNEzDT0
+R2
+I@5IdF?hNbZzX;YSChz_zb1
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 40 18
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vmux_2_to_1_simple
+R1
+!i10b 1
+!s100 EQkJfFX0Rk`gG8:M9WcOV0
+R2
+IjbH1f>@U9X]zG1LPf`f;72
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 14 18
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vseven_seg_digit
+R12
+R1
+!i10b 1
+!s100 [Q]<n:@<aOZ@<TFUeCoLG3
+R2
+I[KdSL`AaANR[jjH06RGBI0
+R3
+S1
+R0
+Z18 w1605676026
+Z19 8../rtl/summator.sv
+Z20 F../rtl/summator.sv
+!i122 1
+L0 38 40
+R7
+r1
+!s85 0
+31
+R8
+R17
+R13
+!i113 1
+o-sv
+R11
+vseven_seg_N
+R12
+R1
+!i10b 1
+!s100 GV_L?MUDceC:E]DYY@QL@2
+R2
+I^WTnB5Xe68IFhXczQ@cUg2
+R3
+S1
+R0
+R18
+R19
+R20
+!i122 1
+L0 19 17
+R7
+r1
+!s85 0
+31
+R8
+R17
+R13
+!i113 1
+o-sv
+R11
+nseven_seg_@n
+vsummator
+R12
+R1
+!i10b 1
+!s100 S3VK;L^7mfV8VJS^S^TTn1
+R2
+Id1Yean5HVo_>2Q3zEoYf60
+R3
+S1
+R0
+R18
+R19
+R20
+!i122 1
+L0 1 16
+R7
+r1
+!s85 0
+31
+R8
+R17
+R13
+!i113 1
+o-sv
+R11
+vswitch_to_led
+R1
+!i10b 1
+!s100 ^5QSD_HKPR6=1Udcm[`DR2
+R2
+IiOKB?8BDGPl`:DiRoheS80
+R3
+R0
+w1605379463
+8../rtl/switch_to_led.v
+F../rtl/switch_to_led.v
+!i122 0
+L0 1 8
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+vup_down_counter
+R12
+R1
+!i10b 1
+!s100 :ViTn05FCzaY2Q3W3Z[DK2
+R2
+IX]n7Y8>Al2hldTJe_^HCS2
+R3
+S1
+R0
+R14
+R15
+R16
+!i122 1
+L0 106 25
+R7
+r1
+!s85 0
+31
+R8
+R17
+R13
+!i113 1
+o-sv
+R11

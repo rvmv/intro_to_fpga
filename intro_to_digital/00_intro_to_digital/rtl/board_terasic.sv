@@ -29,14 +29,23 @@ always_comb
 
 //mux_2_to_1_procedural mux_procedural (.SW(SW), .LEDR(LED));
 
-knight_rider kr (.CLOCK_50(CLK), .LEDR(LED), .SW(SW));
+//knight_rider kr (.CLOCK_50(CLK), .LEDR(LED), .SW(SW));
 
-  localparam WIDTH   = 8;
+  localparam WIDTH   = 64;
   localparam LSB_NUM = 22;
 
   wire [WIDTH-1:0] cntr;
   wire [WIDTH-1:0] cntr_down;
 
+  clock_divider #(.DIV_POW_FASTEST (10), .DIV_POW_SLOWEST (26)) 
+  
+  clk_divider (
+    .fast_clock( CLOCK_50  ), 
+    .sel_lo(     SW[1]     ), 
+    .sel_mid(    SW[2]     ), 
+    .slow_clock( slow_clock)
+  );
+  
     counter
     #(
         .WIDTH ( WIDTH  )
@@ -59,10 +68,22 @@ knight_rider kr (.CLOCK_50(CLK), .LEDR(LED), .SW(SW));
         .cntr_down  ( cntr_down   )
     );
 
-	 //cntr_down [LSB_NUM +: 24] : cntr [LSB_NUM +: 24];
-wire [23:0] data = SW[3] ? cntr_down : cntr;
+wire up_down_switch = SW[3];
+/**
+* [LSB_NUM +: 24] => [22 +: 24] => increment from start bit is 22, width = 24 so cntr_down[22,23,24,25...46] is 24 bits ?
+**/
+wire [23:0] data = up_down_switch ? cntr_down [LSB_NUM +: 24] : cntr [LSB_NUM +: 24];
+wire [9:0] bcd;
 
-summator sm (.CLOCK_50(CLK), .data(data), .seg(seg), .KEY(KEY));
+bin2bcd #(9) bin2bcd_inst (SW, bcd);
+
+  seven_seg_N #(6) hex 
+    (
+        .data   ( bcd[3:0]),
+        .seg    ( seg  )
+    );
+	 
+//summator sm (.CLOCK_50(CLK), .data(data), .seg(seg), .KEY(KEY));
 
 endmodule
 
@@ -83,6 +104,7 @@ module counter
       else cntr <= cntr + 1;
 
     assign cntr_up = cntr;
+	 
 endmodule
 
 
@@ -100,6 +122,7 @@ module counter_down
       else cntr <= cntr - 1;
 
     assign cntr_down = cntr;
+	 
 endmodule
 
 
@@ -127,6 +150,28 @@ always_ff @(posedge clk or posedge reset)
   end 
 
 assign counter = counter_up_down;
+
+endmodule
+
+// parametric Verilog implementation of the double dabble binary to BCD converter
+// for the complete project, see
+// https://github.com/AmeerAbdelhadi/Binary-to-BCD-Converter
+
+module bin2bcd
+ #( parameter                W = 18)  // input width
+  ( input      [W-1      :0] bin   ,  // binary
+    output reg [W+(W-4)/3:0] bcd   ); // bcd {...,thousands,hundreds,tens,ones}
+
+  integer i,j;
+
+  always @(bin) begin
+    for(i = 0; i <= W+(W-4)/3; i = i+1) bcd[i] = 0;     // initialize with zeros
+    bcd[W-1:0] = bin;                                   // initialize with input vector
+    for(i = 0; i <= W-4; i = i+1)                       // iterate on structure depth
+      for(j = 0; j <= i/3; j = j+1)                     // iterate on structure width
+        if (bcd[W-i+4*j -: 4] > 4)                      // if > 4
+          bcd[W-i+4*j -: 4] = bcd[W-i+4*j -: 4] + 4'd3; // add 3
+  end
 
 endmodule
 
